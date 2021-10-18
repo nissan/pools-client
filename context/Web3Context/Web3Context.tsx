@@ -8,7 +8,7 @@ import { API as OnboardApi, Initialization, Wallet } from '@tracer-protocol/onbo
 import { formatEther } from '@ethersproject/units';
 import { Network, networkConfig } from './Web3Context.Config';
 import { ethers, providers } from 'ethers';
-import { ARBITRUM } from '@libs/constants';
+import { KOVAN } from '@libs/constants';
 import { useTheme } from '@context/ThemeContext';
 
 export type OnboardConfig = Partial<Omit<Initialization, 'networkId'>>;
@@ -56,7 +56,7 @@ const Web3Store: React.FC<Web3ContextProps> = ({
     const { isDark } = useTheme();
     const [account, setAccount] = useState<string | undefined>(undefined);
     const [signer, setSigner] = useState<ethers.Signer | undefined>(undefined);
-    const [network, setNetwork] = useState<number | undefined>(parseInt(ARBITRUM));
+    const [network, setNetwork] = useState<number | undefined>(parseInt(KOVAN));
     const [provider, setProvider] = useState<providers.JsonRpcProvider | undefined>(
         new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_DEFAULT_RPC),
     );
@@ -66,7 +66,7 @@ const Web3Store: React.FC<Web3ContextProps> = ({
     const [wallet, setWallet] = useState<Wallet | undefined>(undefined);
     const [onboard, setOnboard] = useState<OnboardApi | undefined>(undefined);
     const [isReady, setIsReady] = useState<boolean>(false);
-    const [config, setConfig] = useState<Network>(networkConfig[ARBITRUM]);
+    const [config, setConfig] = useState<Network>(networkConfig[KOVAN]);
 
     // Initialize OnboardJS
     useEffect(() => {
@@ -75,7 +75,7 @@ const Web3Store: React.FC<Web3ContextProps> = ({
             try {
                 const onboard = Onboard({
                     ...onboardConfig,
-                    networkId: networkIds ? networkIds[0] : parseInt(ARBITRUM), //Default to arb
+                    networkId: networkIds ? networkIds[0] : parseInt(KOVAN), //Default to kovan
                     darkMode: isDark,
                     walletCheck: checks,
                     subscriptions: {

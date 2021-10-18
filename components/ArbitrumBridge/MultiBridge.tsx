@@ -46,7 +46,7 @@ export const MultiBridge: React.FC<MultiBridgeProps> = (props) => {
     const [amountIsInvalid, setAmountIsInvalid] = useState(false);
     const [isBridging, setIsBridging] = useState(false);
 
-    const bridgeableAssetList = useMemo(() => {
+    const bridgeableAssetList: BridgeableAsset[] = useMemo(() => {
         if (!fromNetwork) {
             return [];
         }
@@ -128,10 +128,10 @@ export const MultiBridge: React.FC<MultiBridgeProps> = (props) => {
     };
 
     const buttonGroupOptions = useMemo(() => {
-        return bridgeableAssetList.map(({ symbol }, index) => ({
+        return bridgeableAssetList?.map(({ symbol }, index) => ({
             key: index,
             text: symbol,
-        }));
+        })) ?? [];
     }, [bridgeableAssetList]);
 
     const approvalRequired = useMemo(() => {

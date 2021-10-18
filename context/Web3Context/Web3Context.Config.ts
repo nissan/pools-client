@@ -239,6 +239,28 @@ export const networkConfig: Record<string, Network> = {
         sushiRouterAddress: '',
         tcrAddress: '',
     },
+    '42': {
+        // TODO: fill this out properly
+        id: '42',
+        name: 'Kovan',
+        previewUrl: '',
+        contracts: {
+            poolFactory: {
+                address: 'https://eth-kovan.alchemyapi.io/v2/ebgP8V8WNUT5Uw4KfF1eIVfsZB4hAIsD',
+                abi: PoolFactory__factory.abi,
+            },
+        },
+        hex: '0x2A',
+        poolFarms: [],
+        bptFarms: [],
+        publicRPC: '',
+        graphUri: '',
+        balancerVaultAddress: '',
+        usdcAddress: '0x7ee883585b25f98065cb659b2b0985c03a23db00',
+        sushiRouterAddress: '',
+        tcrAddress: '',
+        knownUSDCPriceFeeds: {},
+    },
     '1': {
         // TODO: fill this out properly
         id: '1',
