@@ -25,7 +25,8 @@ import { ethers, BigNumber as EthersBigNumber } from 'ethers';
 export const initPool: (pool: PoolType, provider: ethers.providers.JsonRpcProvider | ethers.Signer) => Promise<Pool> =
     async (pool, provider) => {
         const contract = new ethers.Contract(pool.address, LeveragedPool__factory.abi, provider) as LeveragedPool;
-
+        console.log(pool.address, 'Address');
+        console.log(contract, 'Contract');
         const [
             updateInterval,
             lastUpdate,
@@ -103,6 +104,7 @@ export const initPool: (pool: PoolType, provider: ethers.providers.JsonRpcProvid
         const leverage = parseInt(name.split('-')?.[0] ?? 1);
         return {
             ...pool,
+            name: name,
             updateInterval: new BigNumber(updateInterval.toString()),
             lastUpdate: new BigNumber(lastUpdate.toString()),
             lastPrice: new BigNumber(ethers.utils.formatEther(lastPrice)),

@@ -246,14 +246,14 @@ export const networkConfig: Record<string, Network> = {
         previewUrl: '',
         contracts: {
             poolFactory: {
-                address: 'https://eth-kovan.alchemyapi.io/v2/ebgP8V8WNUT5Uw4KfF1eIVfsZB4hAIsD',
+                address: '0x43B552A6A5B97f120788A8751547D5D953eFBBcA',
                 abi: PoolFactory__factory.abi,
             },
         },
         hex: '0x2A',
         poolFarms: [],
         bptFarms: [],
-        publicRPC: '',
+        publicRPC: 'https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
         graphUri: '',
         balancerVaultAddress: '',
         usdcAddress: '0x7ee883585b25f98065cb659b2b0985c03a23db00',

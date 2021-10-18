@@ -65,6 +65,7 @@ export const PoolStore: React.FC<Children> = ({ children }: Children) => {
         let mounted = true;
         if (pools && provider) {
             poolsDispatch({ type: 'resetPools' });
+            console.log(pools);
             hasSetPools.current = false;
             Promise.all(pools.map((pool) => initPool(pool, provider)))
                 .then((res) => {

@@ -128,10 +128,12 @@ export const MultiBridge: React.FC<MultiBridgeProps> = (props) => {
     };
 
     const buttonGroupOptions = useMemo(() => {
-        return bridgeableAssetList?.map(({ symbol }, index) => ({
-            key: index,
-            text: symbol,
-        })) ?? [];
+        return (
+            bridgeableAssetList?.map(({ symbol }, index) => ({
+                key: index,
+                text: symbol,
+            })) ?? []
+        );
     }, [bridgeableAssetList]);
 
     const approvalRequired = useMemo(() => {

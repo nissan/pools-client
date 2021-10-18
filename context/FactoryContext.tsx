@@ -4,12 +4,34 @@ import { useWeb3 } from './Web3Context/Web3Context';
 import { ethers } from 'ethers';
 import { PoolFactory } from '@tracer-protocol/perpetual-pools-contracts/types';
 import { PoolType } from '@libs/types/General';
-import { ARBITRUM, ARBITRUM_RINKEBY } from '@libs/constants';
+import { ARBITRUM, ARBITRUM_RINKEBY, KOVAN } from '@libs/constants';
 
 // this is a temp hack to fix fetching pools > 2000 blocks from currentBlock
-type ArbitrumNetwork = typeof ARBITRUM_RINKEBY | typeof ARBITRUM;
+type ArbitrumNetwork = typeof ARBITRUM_RINKEBY | typeof ARBITRUM | typeof KOVAN;
 
 const POOLS: Record<ArbitrumNetwork, any> = {
+    [KOVAN]: [
+        {
+            // 1x
+            name: '',
+            address: '0xe9E63CFd4B1bC44F51E2eB7AF72538bD059caa4B',
+        },
+        {
+            // 3x
+            name: '',
+            address: '0x07f212B934a3Af5E4e3f72a7C693C2DBcc2F07B8',
+        },
+        {
+            // 1x
+            name: '',
+            address: '0x370982524e5483d093F2e37Fda1DE3B8d3c22431',
+        },
+        {
+            // 3x
+            name: '',
+            address: '0xf7cF0675BD177832c37956c11c00ad61693A0e89',
+        },
+    ],
     [ARBITRUM_RINKEBY]: [
         {
             // 1x
@@ -89,6 +111,7 @@ export const FactoryStore: React.FC<Children> = ({ children }: Children) => {
             if (contract) {
                 if (POOLS[network as unknown as ArbitrumNetwork]) {
                     // hacky temp solution to rpc limit issues
+                    console.log();
                     setPools(POOLS[network as unknown as ArbitrumNetwork]);
                 } else {
                     const createdMarkets = contract.filters.DeployPool();
@@ -97,6 +120,7 @@ export const FactoryStore: React.FC<Children> = ({ children }: Children) => {
                         name: event.args.ticker,
                         address: event.args.pool,
                     }));
+                    console.log(pools, 'pool');
                     setPools(pools);
                 }
             }
