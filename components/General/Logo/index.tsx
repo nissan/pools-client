@@ -11,6 +11,7 @@ import EUR_S from '@public/img/logos/currencies/euro_short.svg';
 import BTC_L from '@public/img/logos/currencies/btc_long.svg';
 import BTC_S from '@public/img/logos/currencies/btc_short.svg';
 import ETH from '@public/img/logos/currencies/eth.svg';
+import EURO from '@public/img/logos/currencies/euro.svg';
 import BTC from '@public/img/logos/currencies/btc.svg';
 import SUSHI from '@public/img/logos/currencies/sushi.svg';
 import BALANCER from '@public/img/logos/currencies/balancer.svg';
@@ -46,6 +47,7 @@ export type LogoTicker =
     | 'ETH_S'
     | 'BTC_S'
     | 'ETH'
+    | 'EUR'
     | 'WETH'
     | 'BTC'
     | 'WBTC'
@@ -67,6 +69,7 @@ const logos: Record<LogoTicker, any> = {
     EUR_S: EUR_S,
     ETH_S: ETH_S,
     BTC_S: BTC_S,
+    EUR: EURO,
     ETH: ETH,
     WETH: ETH,
     BTC: BTC,
